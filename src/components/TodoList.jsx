@@ -1,15 +1,22 @@
 import React from 'react'
 import '../css/Todo.css'
 import TodoItem from './TodoItem'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearTodos } from '../redux/todoSlice'
 
 
 
 
 const TodoList = () => {
     const todos = useSelector(store => store.todo.todos)
+    const dispatch = useDispatch()
 
-    console.log(todos);
+    const clearAllTodos = () => {
+        if (todos.length === 0) return;
+        if (window.confirm('Are you sure you want to delete all your todos?')) {
+            dispatch(clearTodos());
+        }
+    }
 
     return (
         <main className='todo__list'>
@@ -18,7 +25,12 @@ const TodoList = () => {
                     <TodoItem key={todo.id} todo={todo} />
                 ))
             }
-            <button className='all__clear'>All Clear</button>
+            <button
+                className='all__clear'
+                onClick={clearAllTodos}
+            >
+                All Clear
+            </button>
         </main>
     )
 }
