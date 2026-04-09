@@ -1,65 +1,73 @@
-import '../css/Todo.css'
-//React icons
-import { FaRegEdit } from "react-icons/fa";
-import { FaCircleCheck } from "react-icons/fa6";
-import { IoIosRemoveCircle } from "react-icons/io";
-
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-
-//*  todoSlice actions
-import { removeTodo, toggleTodo, updateTodo } from '../redux/todoSlice';
+import { CircleX, SquarePen, Check } from 'lucide-react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { toggleTodo, removeTodo, editTodo } from '../store/todoSlice'
+import useAlert from '../hooks/useAlert'
 
 const TodoItem = ({ todo }) => {
-    const { text, id, completed } = todo
-    const dispatch = useDispatch();
+    const { id, text, completed } = todo
+    const tirggerAlert = useAlert()
 
-    //editmode
+    const [isdelete, setIsDelete] = useState(false);
     const [editMode, setEditMode] = useState(false);
-    const [newText, setNewText] = useState(text);
+    const [newText, setNewText] = useState(text)
 
-    const saveTodo = () => {
-        if (!newText.trim()) return;
-        dispatch(updateTodo({ id, text: newText }));
-        setEditMode(false);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        setNewText(text)
+    }, [text])
+
+
+    // Handles smooth deletion with a delay for animation.
+    const handleDelete = () => {
+        setIsDelete(true)
+        setTimeout(() => {
+            dispatch(removeTodo(id))
+        }, 300);
+        tirggerAlert('Delete Todo', 'error')
+    }
+    //Validates and saves the edited text.
+    const handleSave = () => {
+        const tirmmedText = newText.trim()
+        if (tirmmedText === "") {
+            //Reset to original if empty
+            setNewText(text);
+            setEditMode(false);
+            return;
+        }
+        dispatch(editTodo({ id, text: tirmmedText }))
+        setEditMode(false)
+        tirggerAlert('Updated Todo', 'info')
+
     }
 
-
     return (
-        <div className={`todo__card ${completed ? 'line' : ""}`}>
-
-
-
+        <li className={`${completed ? 'checked' : ""} todo__item ${isdelete ? 'deleting' : ""}`}>
             <article className='todo__left'>
-                <input type="checkbox" checked={completed} onChange={() => dispatch(toggleTodo(id))} />
+                <input
+                    type="checkbox"
+                    onChange={() => dispatch(toggleTodo(id))}
+                    checked={completed}
 
+                />
                 {
                     editMode
-                        ? <input
-                            type='text'
-                            value={newText}
-                            onChange={(e) => setNewText(e.target.value)}
-                            className='todo__editInput'
-                        />
+                        ? <input autoFocus className='edit__input' value={newText} onChange={(e) => setNewText(e.target.value)} />
                         : <p> {text} </p>
                 }
-
             </article>
-
-
-
             <article className='todo__right'>
-
                 {
                     editMode
-                        ? <FaCircleCheck onClick={saveTodo} className='check_icon' />
-                        : <FaRegEdit onClick={() => setEditMode(true)} className='edit_icon' />
+                        ? <Check className='icon check' onClick={handleSave} />
+                        : <SquarePen onClick={() => setEditMode(true)} className='icon edit' />
+
                 }
 
-                <IoIosRemoveCircle onClick={() => dispatch(removeTodo(id))} className='remove_icon' />
+                <CircleX onClick={handleDelete} className='icon trash' />
             </article>
-        </div>
-
+        </li>
     )
 }
 

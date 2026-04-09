@@ -1,202 +1,273 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
-
-body {
-    font-family: 'Poppins', sans-serif;
-}
-
-button {
-    font-family: inherit;
-}
-
-/* HEADER */
-header {
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 5px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.561);
-    padding: .5rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    user-select: none;
-
-}
-
-.header__titile {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    color: rgba(0, 0, 0, 0.798);
-}
-
-.header__titile svg {
-    font-size: var(--fs-2xl);
-}
-
-/* FORM */
-.form {
-    border: 1px solid grey;
-    width: 300px;
-    height: 30px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 1rem;
-    user-select: none;
-
-}
-
-.form input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    outline: none;
-    font-size: var(--fs-base);
-    color: rgba(0, 0, 0, 0.839);
-    padding: 0.3rem;
-    font-family: inherit;
-}
-
-.form button {
-    font-weight: 600;
-    letter-spacing: 1px;
-    border: none;
-    background: rgb(0, 123, 255);
-    color: #fff;
-    height: 100%;
-    width: 20%;
-    cursor: pointer;
-    transition: .3s ease all;
-}
-
-.form button:hover {
-    background: rgb(55, 151, 254);
-}
-
-.form button:active {
-    background: rgb(1, 69, 140);
-}
-
-/** TODOLİST */
-.todo__list {
-    border: 1px solid rgba(0, 0, 0, 0.017);
-    border-radius: 5px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+/** TODO FORM ----------------------------------------------*/
+.container {
+    border: 1px solid rgba(0, 127, 231, 0.259);
+    width: 600px;
+    max-width: 100%;
+    margin-top: 2rem;
+    margin: 1rem auto;
     padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-top: 1rem;
-    max-height: 400px;
-    scrollbar-width: thin;
-    overflow: auto;
-    overflow-x: hidden;
-    user-select: none;
-    gap: 10px;
-
-}
-
-.all__clear {
-    width: 50%;
-    height: 40px;
-    border: none;
-    background: rgb(252, 67, 67);
     border-radius: 10px;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 1px;
-    font-size: var(--fs-base);
-    cursor: pointer;
-    transition: .3s all ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.185);
+    background: #fff;
 }
 
-.all__clear:active {
-    transform: translateY(2px);
+.title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
+.title h1 {
+    color: rgba(0, 0, 0, 0.88);
+}
 
-/** TODO  CARD */
-.todo__card {
+.title svg {
+    width: 40px;
+    height: 40px;
+    color: rgb(101, 101, 255);
+}
+
+/** FORM ----------------------------------------------*/
+form {
+    border: 1px solid grey;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: .1rem .3rem;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.014);
-    user-select: none;
-    box-shadow: 0 0 1px;
+    margin-top: 2rem;
+    background: #00000004;
+    padding: 0.2rem;
+    gap: 20px;
+    border-radius: 10px;
 }
 
+form input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+    padding-left: .5rem;
+    font-size: 16px;
+
+}
+
+form button {
+    background-color: #f59e0b;
+    border-radius: 8px;
+    color: #451a03;
+    font-weight: 700;
+    flex: 0.3;
+    border: none;
+    transition: all 0.3s ease;
+    /* Butona derinlik katan hafif bir dokunuş */
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+}
+
+form button:hover {
+    background-color: #d97706;
+    color: #451a03;
+}
+
+/** TODO LİST ----------------------------------------------*/
+.todo__list {
+    margin-top: 1rem;
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    padding: .5rem;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+/** TODO İTEM ----------------------------------------------*/
+.todo__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.086);
+    border-radius: 10px;
+    padding: 0.4rem;
+    animation: fadeLeft 0.3s ease-in-out 0.1s;
+    transition: all 1s ease;
+}
+
+.todo__item.deleting {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+@keyframes fadeLeft {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/** TODO LEFT ----------------------------------------------*/
 .todo__left {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.todo__left p {
-    font-family: inherit;
-}
-
-.todo__left input {
-    width: 18px;
-    height: 18px;
+.todo__left input[type="checkbox"] {
     cursor: pointer;
-    accent-color: rgb(0, 132, 255);
+    width: 15px;
+    height: 15px;
+    accent-color: rgb(0, 128, 255);
 }
 
+/** TODO RİGHT ----------------------------------------------*/
 .todo__right {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
-.todo__right svg {
-    font-size: 22px;
-    transition: .3s all ease;
+.icon {
     cursor: pointer;
+    transition: .3s all ease;
 }
 
-
-
-.todo__right svg:active {
+.icon:active {
     transform: translateY(2px);
 }
 
-.check_icon {
-    color: green;
-
-}
-
-.edit_icon {
+.edit {
     color: orange;
 }
 
-.remove_icon {
-    color: red;
+.trash {
+    color: rgb(187, 0, 0);
 }
 
+.check {
+    color: green;
+}
 
-
-/* change durumu */
-.line {
-    text-decoration: line-through;
-    background: rgb(206, 206, 206);
+.checked {
     opacity: 0.8;
+    text-decoration: line-through;
+    filter: grayscale(100);
+    background-color: rgb(189, 189, 189);
 }
 
-
-/* EDİT MODE INPUT */
-.todo__left .todo__editInput {
-    border: 1px solid rgb(0, 125, 40);
-    background: transparent;
-    width: 100%;
-    outline: none;
-    font-size: var(--fs-base);
-    color: rgba(0, 0, 0, 0.839);
-    padding: 0.3rem;
-    font-family: inherit;
+.edit__input {
+    border: 1px solid grey;
+    max-width: 100%;
+    width: 300px;
+    padding: 0.2rem;
     border-radius: 10px;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+}
+
+/** Static  ----------------------------------------------*/
+
+
+.static-container {
+    padding: 20px;
+    border: 1px solid rgba(0, 71, 153, 0.199);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.164);
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* İstatistik kartlarının dizilimi */
+.static-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Renk temaları */
+.all {
+    background-color: #f0f4ff;
+    color: #3b82f6;
+}
+
+.completed {
+    background-color: #ecfdf5;
+    color: #10b981;
+}
+
+.uncompleted {
+    background-color: #fff7ed;
+    color: #f59e0b;
+}
+
+.label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.count {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+/* Aksiyon butonları */
+.static-actions {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-complete {
+    background-color: #10b981;
+    color: white;
+}
+
+.btn-complete:hover:not(:disabled) {
+    background-color: #059669;
+}
+
+.btn-delete {
+    background-color: #ef4444;
+    color: white;
+}
+
+.btn-delete:hover:not(:disabled) {
+    background-color: #dc2626;
 }

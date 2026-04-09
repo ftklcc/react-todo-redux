@@ -1,43 +1,41 @@
 import React, { useState } from 'react'
-import '../css/Todo.css'
-import { addTodo } from '../redux/todoSlice';
-
-
-
-//React icons
-import { LuListTodo } from "react-icons/lu";
+import { ListCheck } from 'lucide-react';
 import { useDispatch } from 'react-redux';
-
-
-
+import { addTodo } from '../store/todoSlice';
+import useAlert from '../hooks/useAlert';
 
 const TodoForm = () => {
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState("");
     const dispatch = useDispatch()
+
+    //custom hook alerts
+    const triggerAlert = useAlert()
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (!value.trim()) {
-            alert('Is not empty value');
+        if (value.trim() === "") {
+            triggerAlert('empty value', 'error')
             return;
         }
 
-        dispatch(addTodo(value))
+        dispatch(addTodo(value.trim()))
         setValue("")
+        triggerAlert('Add Todo', 'success')
     }
 
     return (
-        <header>
-            <div className='header__titile'>
-                <h1>Todo App</h1>
-                <LuListTodo />
+        <header className='mx'>
+            <div className='title'>
+                <h1>Todo List App</h1>
+                <ListCheck />
             </div>
-            <form className='form' onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input
-                    type="text"
-                    placeholder='e.g'
                     value={value}
-                    onChange={(e) => setValue(e.target.value)} />
+                    type="text"
+                    onChange={(e) => setValue(e.target.value)}
+                    placeholder='Todo Giriniz...' />
                 <button type='submit'>Add</button>
             </form>
         </header>

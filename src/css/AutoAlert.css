@@ -1,0 +1,43 @@
+/* Genel Alert Kutusu Yapısı */
+.alert {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    height: 40px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-weight: 500;
+    letter-spacing: 2px;
+    border-left: 5px solid transparent;
+    transition: all 0.3s ease-in-out;
+    text-transform: capitalize;
+}
+
+.alert--success {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border-left-color: #10b981;
+}
+
+.alert--error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border-left-color: #ef4444;
+}
+
+.alert--warning {
+    background-color: #fffbeb;
+    color: #92400e;
+    border-left-color: #f59e0b;
+}
+
+.alert--info {
+    background-color: #eff6ff;
+    color: #1e40af;
+    border-left-color: #3b82f6;
+}
+
+.alert:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}

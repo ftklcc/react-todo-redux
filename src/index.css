@@ -1,89 +1,42 @@
-:root {
-    /* --- FONT SIZES --- */
-    --fs-xs: 0.75rem;
-    /* 12px */
-    --fs-sm: 0.875rem;
-    /* 14px */
-    --fs-base: 1rem;
-    /* 16px */
-    --fs-md: 1.125rem;
-    /* 18px */
-    --fs-lg: 1.25rem;
-    /* 20px */
-    --fs-xl: 1.5rem;
-    /* 24px */
-    --fs-2xl: 1.875rem;
-}
-
-
-
-/* CSS RESET START */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html {
-    font-size: 100%;
-    -moz-text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-}
-
-body {
-    font-size: var(--fs-base);
-    font-family: "Poppins", sans-serif;
-    /* 4. Add accessible line-height */
-    line-height: 1.5;
-    /* 5. Improve text rendering */
-    -webkit-font-smoothing: antialiased;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-    display: block;
-    max-width: 100%;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    overflow-wrap: break-word;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    text-wrap: balance;
-}
-
-p {
-    text-wrap: pretty;
+.mx {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style-type: none;
 }
 
-a {
-    text-decoration: none;
+p,
+h1,
+span {
+  user-select: none;
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+  padding: 5px 20px;
+  transition: .3s all ease;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 10px;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: #e8e8e8;
 }

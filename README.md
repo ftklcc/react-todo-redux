@@ -1,47 +1,16 @@
-# React Todo App (Redux + Vite)
+# React + Vite
 
-Bu proje, modern web teknolojileri kullanılarak geliştirilmiş, şık ve işlevsel bir Todo (Yapılacaklar) uygulamasıdır. Kullanıcıların görev eklemesine, düzenlemesine, tamamlamasına ve silmesine olanak tanır. Veriler yerel depolamada (LocalStorage) saklanır.
-## Özellikler
-- Todo ekleme
-- Todo silme
-- Todo tamamlandı durumu toggle
-- Todo düzenleme (edit)
-- LocalStorage ile verilerin kalıcı olması
-- Basit uyarılar (`alert`)
-- Responsive ve minimal CSS ile tasarım
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Kullanılan Teknolojiler
+Currently, two official plugins are available:
 
-Projede aşağıdaki teknolojiler ve sürümleri kullanılmıştır:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-- **React 19**: Kullanıcı arayüzü bileşen tabanlı yapı.
-- **Vite 8**: Hızlı geliştirme ortamı ve yapılandırma.
-- **Redux Toolkit 2.11**: Global state (durum) yönetimi.
-- **React Icons 5.6**: Icon kullanımı için.
+## React Compiler
 
-## Kurulum ve Çalıştırma
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-Projeyi yerel makinenizde çalıştırmak için şu adımları izleyin:
+## Expanding the ESLint configuration
 
-1. Bağımlılıkları yükleyin:
-   ```bash
-   npm install
-   ```
-
-2. Geliştirme sunucusunu başlatın:
-   ```bash
-   npm run dev
-   ```
-
-3. Tarayıcınızda `http://localhost:5173` adresine gidin.
-
-##  Önizleme
-
-![Project Screenshot](src/assets/todoApp.png)
-
-##  Mevcut Durum
-
-Uygulama tam fonksiyonel olarak çalışmaktadır:
-- Görev ekleme, silme ve düzenleme yapılabilir.
-- Görevler "tamamlandı" olarak işaretlenebilir.
-- Sayfa yenilense bile veriler kaybolmaz (LocalStorage entegrasyonu).
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

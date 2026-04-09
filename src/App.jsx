@@ -1,18 +1,21 @@
-import TodoForm from "./components/TodoForm";
-import './App.css'
-import TodoList from "./components/TodoList";
+import TodoForm from './components/TodoForm'
+import './css/Todo.css'
+import TodoList from './components/TodoList'
+import StaticAction from './components/StaticAction'
+import AutoAlert from './components/AutoAlert'
 
-function App() {
 
-  return (
+const App = () => {
 
-    <div className="container">
-      <TodoForm />
-      <TodoList />
-    </div>
 
-  );
-
+    return (
+        <div className='container'>
+            <TodoForm />
+            <AutoAlert />
+            <TodoList />
+            <StaticAction />
+        </div>
+    )
 }
 
-export default App;
+export default App
