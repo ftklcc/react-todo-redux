@@ -39,4 +39,7 @@ button:active {
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background: #e8e8e8;
+  background: url(./assets/iamges/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
